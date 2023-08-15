@@ -4,27 +4,36 @@ namespace Calc.Services
 {
     public class HistoryService : IHistoryService
     {
-        static List<Calculation> calculationHistory = CalculationHistory.calculationHistory;
+        private readonly CalculatorDBContext calculatorDbContext; 
+
+        public HistoryService(CalculatorDBContext calculatorDbContext)
+        {
+            this.calculatorDbContext = calculatorDbContext;
+        }   
 
         public void AddToHistory(Calculation calculation)
         {
-            calculationHistory.Add(calculation);
+            calculatorDbContext.CalculationHistory.Add(calculation);
+            calculatorDbContext.SaveChanges();
         }
 
         public void ClearHistory()
         {
-            calculationHistory.Clear();
+            var allHistory = calculatorDbContext.CalculationHistory.ToList();
+            calculatorDbContext.CalculationHistory.RemoveRange(allHistory);
+            calculatorDbContext.SaveChanges();
         }
 
         public List<string> GetHistory()
         {
+            var allHistory = calculatorDbContext.CalculationHistory.ToList();
             List<string> history = new List<string>();
-            foreach (var calculation in calculationHistory)
+            foreach (var calculation in allHistory)
             {
-                string a = calculation.a.ToString();
-                string b = calculation.b.ToString();
-                string result = calculation.result.ToString();
-                string? operation = calculation.operation.ToString();
+                string a = calculation.A.ToString();
+                string b = calculation.B.ToString();
+                string result = calculation.Result.ToString();
+                string? operation = calculation.Operation.ToString();
                 history.Add(a + " " + operation + " " + b + " " + "=" + " " + result);
             }
 

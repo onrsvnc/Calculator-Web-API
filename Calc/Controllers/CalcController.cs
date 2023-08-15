@@ -14,64 +14,69 @@ namespace Calc.Controllers
             historyService = ihistoryservice;
         }
 
-        [HttpGet("Add/{a}/{b}")]
-        public ActionResult<double> Add(double a, double b)
+        [HttpGet("Addition/{a}/{b}")]
+        public ActionResult<decimal> Add(decimal a, decimal b)
         {
             var result = a + b;
             var calculation = new Calculation
             {
-                a = a,
-                b = b,
-                result = result,
-                operation = "+"
+                CalculationID = GetNewId(),
+                A = a,
+                B = b,
+                Result = result,
+                Operation = "+"
             };
-            historyService.AddToHistory(calculation);
-            return calculation.result;
+
+        historyService.AddToHistory(calculation);
+            return calculation.Result;
         }
 
         [HttpGet("Substract/{a}/{b}")]
-        public ActionResult<double> Substract(double a, double b)
+        public ActionResult<decimal> Substract(decimal a, decimal b)
         {
             var result = a - b;
             var calculation = new Calculation
             {
-                a = a,
-                b = b,
-                result = result,
-                operation = "-"
+                CalculationID = GetNewId(),
+                A = a,
+                B = b,
+                Result = result,
+                Operation = "-"
             };
             historyService.AddToHistory(calculation);
-            return calculation.result;
+            return calculation.Result;
         }
 
         [HttpGet("Multiply/{a}/{b}")]
-        public ActionResult<double> Multiply(double a, double b)
+        public ActionResult<decimal> Multiply(decimal a, decimal b)
         {
             var result = a * b;
             var calculation = new Calculation
             {
-                a = a,
-                b = b,
-                result = result,
-                operation = "x"
+                CalculationID = GetNewId(),
+                A = a,
+                B = b,
+                Result = result,
+                Operation = "x"
             };
             historyService.AddToHistory(calculation);
-            return calculation.result;
+            return calculation.Result;
         }
 
         [HttpGet("Divide/{a}/{b}")]
-        public ActionResult<double> Divide(double a, double b)
+        public ActionResult<decimal> Divide(decimal a, decimal b)
         {
             var result = a / b;
             var calculation = new Calculation
             {
-                a = a,
-                b = b,
-                result = result,
-                operation = "/"
+                CalculationID = GetNewId(),
+                A = a,
+                B = b,
+                Result = result,
+                Operation = "/"
             };
             historyService.AddToHistory(calculation);
-            return calculation.result;
+            return calculation.Result;
         }
 
         [HttpGet("ShowHistory")]
@@ -80,9 +85,17 @@ namespace Calc.Controllers
             return historyService.GetHistory();            
         }
 
+        private int GetNewId()
+        { 
+            DateTime currentTime = DateTime.Now;
+            int hour = currentTime.Hour;
+            int minute = currentTime.Minute;
+            int second = currentTime.Second;
+            int millisecond = currentTime.Millisecond;
+            int uniqueId = hour * 10000000 + minute * 100000 + second * 1000 + millisecond;
 
-
-
+            return uniqueId;
+        }
 
     }
 }

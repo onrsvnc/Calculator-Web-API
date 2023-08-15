@@ -140,3 +140,8 @@ C:\Users\Onur Sevinç 4ARC\Documents\GitHub\Calculator-Web-API\Calc\obj\Debug\ne
 C:\Users\Onur Sevinç 4ARC\Documents\GitHub\Calculator-Web-API\Calc\obj\Debug\net7.0\Calc.pdb
 C:\Users\Onur Sevinç 4ARC\Documents\GitHub\Calculator-Web-API\Calc\obj\Debug\net7.0\Calc.genruntimeconfig.cache
 C:\Users\Onur Sevinç 4ARC\Documents\GitHub\Calculator-Web-API\Calc\obj\Debug\net7.0\ref\Calc.dll
+C:\Users\Onur Sevinç 4ARC\Documents\GitHub\Calculator-Web-API\Calc\bin\Debug\net7.0\Humanizer.dll
+C:\Users\Onur Sevinç 4ARC\Documents\GitHub\Calculator-Web-API\Calc\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Onur Sevinç 4ARC\Documents\GitHub\Calculator-Web-API\Calc\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Onur Sevinç 4ARC\Documents\GitHub\Calculator-Web-API\Calc\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\Onur Sevinç 4ARC\Documents\GitHub\Calculator-Web-API\Calc\bin\Debug\net7.0\System.CodeDom.dll

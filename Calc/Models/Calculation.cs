@@ -1,10 +1,14 @@
-﻿namespace Calc.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Calc.Models
 {
     public class Calculation
     {
-        public double a;
-        public double b;
-        public double result;
-        public string? operation;
+        [Key]
+        public int CalculationID { get; set; }
+        public decimal A { get; set; }
+        public decimal B { get; set; }
+        public decimal Result { get; set; }
+        public string? Operation { get; set; }
     }
 }
