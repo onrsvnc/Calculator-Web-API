@@ -6,16 +6,35 @@ namespace Calc.Models
     {
         public DbSet<Calculation> CalculationHistory { get; set; }
 
-        public CalculatorDBContext(DbContextOptions<CalculatorDBContext> options) : base (options)
+        public CalculatorDBContext(DbContextOptions<CalculatorDBContext> options) : base(options)
         {
 
         }
 
-        // tried to get unique id while creating the model here....
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Calculation>().Property(c => c.CalculationID).ValueGeneratedOnAdd();
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Calculation>()
+                .Property(c => c.A)
+                .HasColumnType("decimal(18, 2)"); 
+
+            modelBuilder.Entity<Calculation>()
+                .Property(c => c.B)
+                .HasColumnType("decimal(18, 2)"); 
+
+            modelBuilder.Entity<Calculation>()
+                .Property(c => c.Result)
+                .HasColumnType("decimal(18, 2)"); 
+
+            modelBuilder.Entity<Calculation>()
+                .Property(c => c.Operation)
+                .HasMaxLength(10); 
+
+            modelBuilder.Entity<Calculation>()
+                .Property(c => c.CalculationID)
+                .ValueGeneratedOnAdd();
+
+            base.OnModelCreating(modelBuilder);
+        }
 
     }
 }

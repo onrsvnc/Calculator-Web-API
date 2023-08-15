@@ -20,7 +20,6 @@ namespace Calc.Controllers
             var result = a + b;
             var calculation = new Calculation
             {
-                CalculationID = GetNewId(),
                 A = a,
                 B = b,
                 Result = result,
@@ -37,7 +36,6 @@ namespace Calc.Controllers
             var result = a - b;
             var calculation = new Calculation
             {
-                CalculationID = GetNewId(),
                 A = a,
                 B = b,
                 Result = result,
@@ -53,7 +51,6 @@ namespace Calc.Controllers
             var result = a * b;
             var calculation = new Calculation
             {
-                CalculationID = GetNewId(),
                 A = a,
                 B = b,
                 Result = result,
@@ -69,7 +66,6 @@ namespace Calc.Controllers
             var result = a / b;
             var calculation = new Calculation
             {
-                CalculationID = GetNewId(),
                 A = a,
                 B = b,
                 Result = result,
@@ -83,18 +79,6 @@ namespace Calc.Controllers
         public List<string> GetHistory()
         {
             return historyService.GetHistory();            
-        }
-
-        private int GetNewId()
-        { 
-            DateTime currentTime = DateTime.Now;
-            int hour = currentTime.Hour;
-            int minute = currentTime.Minute;
-            int second = currentTime.Second;
-            int millisecond = currentTime.Millisecond;
-            int uniqueId = hour * 10000000 + minute * 100000 + second * 1000 + millisecond;
-
-            return uniqueId;
         }
 
     }
